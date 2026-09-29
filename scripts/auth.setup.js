@@ -14,7 +14,14 @@ async function main() {
   await fs.mkdir(path.dirname(storageStatePath), { recursive: true });
 
   const browser = await chromium.launch({ headless: true });
-  const context = await browser.newContext();
+  const context = await browser.newContext({
+    ignoreHTTPSErrors: true,
+  });
+
+  await context.grantPermissions(['clipboard-read', 'clipboard-write'], {
+    origin: baseUrl,
+  });
+
   const page = await context.newPage();
 
   try {

@@ -21,4 +21,25 @@ test.describe('Dashboard', () => {
 
     await expect(dashboardPage.profileMenu).toBeVisible();
   });
+
+  test('user can open the buzz feed and view recent posts @regression', async ({
+    loginPage,
+    dashboardPage,
+  }) => {
+    const loginData = await loadLoginData();
+
+    await loginPage.open();
+    await loginPage.login(
+      resolveUsername(loginData),
+      resolvePassword(loginData),
+    );
+
+    await dashboardPage.open();
+    await dashboardPage.page.getByRole('link', { name: 'Buzz' }).click();
+
+    await expect(dashboardPage.page).toHaveURL(/\/web\/index\.php\/buzz\/viewBuzz/);
+    await expect(dashboardPage.page.getByText('Buzz Newsfeed', { exact: true })).toBeVisible();
+    await expect(dashboardPage.page.getByText('Most Recent Posts', { exact: true })).toBeVisible();
+    await expect(dashboardPage.page.getByText('QA IS THE FUTURE', { exact: true })).toBeVisible();
+  });
 });

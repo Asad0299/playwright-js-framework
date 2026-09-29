@@ -19,7 +19,7 @@ export class BasePage {
     try {
       await this.page.goto(target, { waitUntil: 'domcontentloaded' });
     } catch (error) {
-      if (error && error.message && error.message.includes('ERR_ABORTED') && this.page.url() === target) {
+      if (error && error.message && error.message.includes('ERR_ABORTED')) {
         return this.page;
       }
       throw error;

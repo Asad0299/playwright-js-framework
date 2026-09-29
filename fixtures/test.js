@@ -11,7 +11,25 @@ import TimePage from '../pages/time_page.js';
 import RecruitmentPage from '../pages/recruitment_page.js';
 import MyInfoPage from '../pages/my_info_page.js';
 
+const trustedOrigin = 'https://opensource-demo.orangehrmlive.com';
+
 export const test = baseTest.extend({
+  context: async ({ browser }, use) => {
+    const context = await browser.newContext({
+      ignoreHTTPSErrors: true,
+    });
+
+    await context.grantPermissions(['clipboard-read', 'clipboard-write'], {
+      origin: trustedOrigin,
+    });
+
+    await use(context);
+    await context.close();
+  },
+  page: async ({ context }, use) => {
+    const page = await context.newPage();
+    await use(page);
+  },
   loginPage: async ({ page }, use) => {
     await use(new LoginPage(page));
   },

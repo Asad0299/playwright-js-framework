@@ -1,0 +1,16 @@
+import { chromium } from '@playwright/test';
+const browser = await chromium.launch({ headless: true });
+const page = await browser.newPage();
+await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
+await page.getByPlaceholder('Username').fill('Admin');
+await page.getByPlaceholder('Password').fill('admin123');
+await page.getByRole('button', { name: 'Login' }).click();
+await page.waitForURL('**/dashboard/index', { timeout: 20000 });
+await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/buzz/viewBuzz');
+await page.waitForTimeout(5000);
+console.log('URL', page.url());
+const body = await page.locator('body').innerText();
+console.log(body.slice(0, 3000));
+console.log('buttons', await page.locator('button').count());
+console.log('svg', await page.locator('svg').count());
+await browser.close();
