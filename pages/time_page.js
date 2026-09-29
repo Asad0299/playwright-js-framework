@@ -2,7 +2,7 @@ import BasePage from './base_page.js';
 
 export class TimePage extends BasePage {
   constructor(page) {
-    super(page, '/web/index.php/time/viewTimeModule');
+    super(page, '/web/index.php/time/viewEmployeeTimesheet');
     this.pageHeading = page.getByRole('heading', { name: /time/i });
     this.timeSheetTable = page.locator('.oxd-table');
   }

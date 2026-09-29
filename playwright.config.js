@@ -8,6 +8,7 @@ const environment = getEnvironment();
 const browserName = getBrowserName();
 
 export default defineConfig({
+  globalSetup: './global-setup.js',
   testDir: './tests',
   fullyParallel: true,
   timeout: 30000,
@@ -25,6 +26,7 @@ export default defineConfig({
   outputDir: 'test-results',
   use: {
     baseURL: getBaseUrl(),
+    storageState: 'auth/orangehrm.json',
     headless: process.env.HEADLESS !== 'false',
     actionTimeout: 15000,
     navigationTimeout: 30000,

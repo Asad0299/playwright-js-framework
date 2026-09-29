@@ -4,7 +4,7 @@ export class DashboardPage extends BasePage {
   constructor(page) {
     super(page, '/web/index.php/dashboard/index');
     this.dashboardHeading = page.getByRole('heading', { name: /dashboard/i });
-    this.profileMenu = page.locator('.oxd-userdropdown-tab');
+    this.profileMenu = page.getByAltText('profile picture').first();
     this.logoutButton = page.getByRole('menuitem', { name: /logout/i });
   }
 
