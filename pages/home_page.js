@@ -2,9 +2,9 @@ import BasePage from './base_page.js';
 
 export class HomePage extends BasePage {
   constructor(page) {
-    super(page, '/');
-    this.pageHeading = page.getByRole('heading', { name: /home|welcome/i });
-    this.dashboardLink = page.getByRole('link', { name: /dashboard/i });
+    super(page, '/web/index.php/dashboard/index');
+    this.pageHeading = page.getByRole('heading', { name: /dashboard/i });
+    this.dashboardLink = page.getByRole('link', { name: 'Dashboard' });
     this.logoutButton = page.getByRole('button', { name: /logout/i });
   }
 

@@ -2,11 +2,11 @@ import BasePage from './base_page.js';
 
 export class LoginPage extends BasePage {
   constructor(page) {
-    super(page, '/login');
-    this.usernameInput = page.getByLabel(/username|email/i).or(page.getByPlaceholder(/username|email/i));
-    this.passwordInput = page.getByLabel(/password/i).or(page.getByPlaceholder(/password/i));
-    this.loginButton = page.getByRole('button', { name: /login/i });
-    this.errorMessage = page.getByRole('alert').or(page.locator('[data-testid="error-message"]'));
+    super(page, '/web/index.php/auth/login');
+    this.usernameInput = page.getByPlaceholder('Username');
+    this.passwordInput = page.getByPlaceholder('Password');
+    this.loginButton = page.getByRole('button', { name: 'Login' });
+    this.errorMessage = page.getByText(/invalid credentials|required/i);
   }
 
   async open() {
@@ -31,6 +31,10 @@ export class LoginPage extends BasePage {
     await this.enterUsername(username);
     await this.enterPassword(password);
     await this.clickLogin();
+  }
+
+  async isLoginPageDisplayed() {
+    return this.usernameInput.isVisible();
   }
 
   getErrorMessage() {

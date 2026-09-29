@@ -2,6 +2,14 @@ import baseTest, { expect } from '@playwright/test';
 import LoginPage from '../pages/login_page.js';
 import HomePage from '../pages/home_page.js';
 import DashboardPage from '../pages/dashboard_page.js';
+import NavigationPage from '../pages/navigation_page.js';
+import AdminPage from '../pages/admin_page.js';
+import PimPage from '../pages/pim_page.js';
+import EmployeeListPage from '../pages/employee_list_page.js';
+import LeavePage from '../pages/leave_page.js';
+import TimePage from '../pages/time_page.js';
+import RecruitmentPage from '../pages/recruitment_page.js';
+import MyInfoPage from '../pages/my_info_page.js';
 
 export const test = baseTest.extend({
   loginPage: async ({ page }, use) => {
@@ -12,6 +20,30 @@ export const test = baseTest.extend({
   },
   dashboardPage: async ({ page }, use) => {
     await use(new DashboardPage(page));
+  },
+  navigationPage: async ({ page }, use) => {
+    await use(new NavigationPage(page));
+  },
+  adminPage: async ({ page }, use) => {
+    await use(new AdminPage(page));
+  },
+  pimPage: async ({ page }, use) => {
+    await use(new PimPage(page));
+  },
+  employeeListPage: async ({ page }, use) => {
+    await use(new EmployeeListPage(page));
+  },
+  leavePage: async ({ page }, use) => {
+    await use(new LeavePage(page));
+  },
+  timePage: async ({ page }, use) => {
+    await use(new TimePage(page));
+  },
+  recruitmentPage: async ({ page }, use) => {
+    await use(new RecruitmentPage(page));
+  },
+  myInfoPage: async ({ page }, use) => {
+    await use(new MyInfoPage(page));
   },
 });
 

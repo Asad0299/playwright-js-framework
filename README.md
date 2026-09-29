@@ -1,9 +1,9 @@
 # Playwright JavaScript Automation Framework
 
 ## Project Overview
-This repository is an enterprise-style Playwright JavaScript automation framework designed for scalable UI and API automation in CI/CD environments. The framework follows a maintainable architecture grounded in the Page Object Model, Playwright fixtures, externalized test data, environment-driven configuration, and professional reporting.
+This repository is an enterprise-style Playwright JavaScript automation framework adapted for the live OrangeHRM demo application. It is designed for scalable UI automation in CI/CD environments and follows a maintainable architecture grounded in the Page Object Model, Playwright fixtures, externalized test data, environment-driven configuration, and professional reporting.
 
-The goal is to provide a reusable foundation that can evolve with modern QA automation needs while remaining understandable to teams that need to maintain it over time.
+The framework is validated against the public OrangeHRM demo app at https://opensource-demo.orangehrmlive.com and uses the default demo credentials: `Admin` / `admin123`.
 
 ## Architecture
 The framework is organized by responsibility:
