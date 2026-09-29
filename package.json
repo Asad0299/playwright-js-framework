@@ -1,0 +1,50 @@
+{
+  "name": "playwright-js-framework",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Enterprise-style Playwright JavaScript automation framework with POM, fixtures, API, and CI support.",
+  "scripts": {
+    "test": "cross-env ENV=qa playwright test",
+    "test:headed": "cross-env ENV=qa playwright test --headed",
+    "test:debug": "cross-env ENV=qa playwright test --debug",
+    "test:ui": "cross-env ENV=qa playwright test --ui",
+    "test:smoke": "cross-env ENV=qa playwright test --grep @smoke",
+    "test:sanity": "cross-env ENV=qa playwright test --grep @sanity",
+    "test:regression": "cross-env ENV=qa playwright test --grep @regression",
+    "test:parallel": "cross-env ENV=qa playwright test --workers=2",
+    "test:chromium": "cross-env ENV=qa BROWSER=chromium playwright test",
+    "test:firefox": "cross-env ENV=qa BROWSER=firefox playwright test",
+    "test:webkit": "cross-env ENV=qa BROWSER=webkit playwright test",
+    "test:qa": "cross-env ENV=qa playwright test",
+    "test:staging": "cross-env ENV=staging playwright test",
+    "allure:generate": "allure generate reports/allure-results --clean -o reports/allure-report",
+    "allure:open": "allure open reports/allure-report",
+    "allure:serve": "allure serve reports/allure-results",
+    "auth": "node scripts/auth.setup.js",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "keywords": [
+    "playwright",
+    "javascript",
+    "automation",
+    "testing",
+    "qa"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@playwright/test": "1.55.0",
+    "allure-playwright": "2.13.0",
+    "cross-env": "7.0.3",
+    "dotenv": "16.6.1",
+    "exceljs": "4.4.0"
+  },
+  "devDependencies": {
+    "allure-commandline": "2.46.1",
+    "eslint": "9.17.0",
+    "prettier": "3.4.0"
+  }
+}

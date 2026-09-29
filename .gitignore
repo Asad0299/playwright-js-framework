@@ -1,0 +1,15 @@
+node_modules/
+.env
+.env.local
+.env.*
+auth/*.json
+!auth/.gitkeep
+playwright-report/
+allure-results/
+allure-report/
+reports/
+!reports/.gitkeep
+test-results/
+!test-results/.gitkeep
+.DS_Store
+npm-debug.log*
